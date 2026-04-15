@@ -129,28 +129,27 @@ function App() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        mixBlendMode: 'screen',
-                        background: 'black',
                         padding: '0',
-                        overflow: 'hidden'
+                        overflow: 'visible'
                     }}>
                         <img
                             src="/icon.png"
                             alt="GrabChat Logo"
                             style={{
-                                width: 'var(--logo-width, 84px)',
+                                width: 'var(--logo-width, 74px)',
                                 height: 'auto',
                                 objectFit: 'contain',
-                                filter: 'invert(1) hue-rotate(180deg) brightness(1.1)',
+                                filter: 'invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.1)',
                                 mixBlendMode: 'screen',
-                                transform: 'scale(1.1)'
+                                transform: 'scale(1.15)',
+                                display: 'block'
                             }}
                             onError={(e) => {
                                 e.target.style.display = 'none';
                                 e.target.nextSibling.style.display = 'block';
                             }}
                         />
-                        <div style={{ display: 'none', fontSize: '2rem' }}>💬</div>
+                        <div style={{ display: 'none', fontSize: '2.2rem' }}>💬</div>
                     </div>
                     <motion.h1
                         initial={{ opacity: 0, x: -10 }}
@@ -167,56 +166,55 @@ function App() {
                 {/* PWA Install Notification */}
                 {showBanner && !isInstalled && (
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
                     style={{
                         position: 'fixed',
-                        bottom: 'max(1.5rem, env(safe-area-inset-bottom))',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        background: 'rgba(20, 20, 20, 0.9)',
-                        backdropFilter: 'blur(20px) saturate(180%)',
-                        WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                        padding: '1rem',
+                        bottom: 'max(1rem, env(safe-area-inset-bottom))',
+                        left: '1rem',
+                        right: '1rem',
+                        margin: '0 auto',
+                        background: 'rgba(20, 20, 20, 0.95)',
+                        backdropFilter: 'blur(24px) saturate(160%)',
+                        WebkitBackdropFilter: 'blur(24px) saturate(160%)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        padding: '12px 16px',
                         borderRadius: '24px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        gap: '1rem',
-                        boxShadow: '0 30px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)',
-                        zIndex: 9999,
-                        width: 'calc(100% - 32px)',
-                        maxWidth: '440px',
+                        gap: '12px',
+                        boxShadow: '0 30px 60px rgba(0,0,0,0.7)',
+                        zIndex: 99999,
+                        maxWidth: '430px',
                         boxSizing: 'border-box'
                     }}
                     className="pwa-banner"
                 >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '200px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', overflow: 'hidden' }}>
                             <div style={{ 
                                 width: '40px', 
                                 height: '40px', 
                                 background: 'white', 
-                                borderRadius: '12px', 
+                                borderRadius: '14px', 
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 justifyContent: 'center',
-                                flexShrink: 0,
-                                boxShadow: '0 4px 12px rgba(255,255,255,0.1)'
+                                flexShrink: 0
                             }}>
                                 <img src="/favicon.svg" width="22" height="22" style={{ filter: 'invert(1)' }} />
                             </div>
-                            <div style={{ textAlign: 'left' }}>
-                                <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 700, color: 'white', lineHeight: 1.2 }}>GrabChat App</h4>
-                                <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.6, color: 'white', marginTop: '2px' }}>Install for native experience</p>
+                            <div style={{ textAlign: 'left', minWidth: 0 }}>
+                                <h4 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800, color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>GrabChat App</h4>
+                                <p style={{ margin: 0, fontSize: '0.75rem', opacity: 0.5, color: 'white' }}>High-fidelity utility</p>
                             </div>
                         </div>
-                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'flex-end' }}>
+                        <div style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
                             <button 
                                 onClick={dismissBanner}
-                                style={{ background: 'transparent', border: 'none', color: '#888', fontSize: '0.85rem', cursor: 'pointer', padding: '0.5rem', fontWeight: 600 }}
+                                style={{ background: 'transparent', border: 'none', color: '#666', fontSize: '0.8rem', cursor: 'pointer', padding: '8px', fontWeight: 600 }}
                             >
-                                Dismiss
+                                Skip
                             </button>
                             <button 
                                 onClick={handleInstall}
@@ -224,13 +222,12 @@ function App() {
                                     background: 'white', 
                                     color: 'black', 
                                     border: 'none', 
-                                    padding: '0.6rem 1.2rem', 
-                                    borderRadius: '10px', 
-                                    fontWeight: 750, 
-                                    fontSize: '0.85rem', 
+                                    padding: '8px 16px', 
+                                    borderRadius: '14px', 
+                                    fontWeight: 800, 
+                                    fontSize: '0.8rem', 
                                     cursor: 'pointer',
-                                    whiteSpace: 'nowrap',
-                                    transition: 'all 0.2s ease'
+                                    whiteSpace: 'nowrap'
                                 }}
                             >
                                 Install
