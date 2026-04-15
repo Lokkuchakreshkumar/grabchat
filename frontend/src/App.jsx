@@ -138,10 +138,11 @@ function App() {
                             src="/icon.png"
                             alt="GrabChat Logo"
                             style={{
-                                width: 'var(--logo-width, 64px)',
+                                width: 'var(--logo-width, 84px)',
                                 height: 'auto',
                                 objectFit: 'contain',
-                                filter: 'brightness(1.5) contrast(1.1)',
+                                filter: 'invert(1) hue-rotate(180deg) brightness(1.1)',
+                                mixBlendMode: 'screen',
                                 transform: 'scale(1.1)'
                             }}
                             onError={(e) => {
