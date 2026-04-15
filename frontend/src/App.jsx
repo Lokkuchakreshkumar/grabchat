@@ -369,8 +369,11 @@ function App() {
                 )}
             </main>
 
-            <footer style={{ marginTop: 'auto', padding: '3rem 2rem', textAlign: 'center', color: '#444', fontSize: '0.85rem' }}>
-                &copy; 2026 GrabChat • Premium PDF High-Fidelity Capture
+            <footer style={{ marginTop: 'auto', padding: '3rem 2rem', textAlign: 'center', color: '#444', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div>&copy; 2026 GrabChat • Premium PDF High-Fidelity Capture</div>
+                <div style={{ opacity: 0.6 }}>
+                    made with love by <a href="https://chakresh.vercel.app" style={{ color: '#666', textDecoration: 'none', fontWeight: 'bold', transition: 'all 0.2s ease', borderBottom: '1px solid #10a37f' }} onMouseOver={(e) => { e.target.style.color = '#10a37f'; }} onMouseOut={(e) => { e.target.style.color = '#666'; }}>chakresh</a>
+                </div>
             </footer>
         </div>
     );

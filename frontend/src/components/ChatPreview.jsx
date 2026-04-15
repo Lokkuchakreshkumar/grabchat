@@ -44,8 +44,11 @@ const ChatPreview = ({ messages, title }) => {
                 </div>
             ))}
             
-            <div style={{ textAlign: 'center', color: '#666', fontSize: '0.75rem', marginTop: '5rem', paddingBottom: '2rem' }}>
-                Grabbed with GrabChat • {new Date().toLocaleDateString()}
+            <div style={{ textAlign: 'center', color: '#666', fontSize: '0.8rem', marginTop: '5rem', paddingBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div>Grabbed with GrabChat • {new Date().toLocaleDateString()}</div>
+                <div style={{ opacity: 0.8 }}>
+                    made with love by <a href="https://chakresh.vercel.app" style={{ color: '#10a37f', textDecoration: 'none', fontWeight: 'bold', borderBottom: '1px solid #10a37f' }}>chakresh</a>
+                </div>
             </div>
         </div>
     );
