@@ -138,13 +138,18 @@ function App() {
                             src="/icon.png"
                             alt="GrabChat Logo"
                             style={{
-                                width: 'var(--logo-width, 96px)',
+                                width: 'var(--logo-width, 64px)',
                                 height: 'auto',
                                 objectFit: 'contain',
-                                filter: 'invert(1) hue-rotate(180deg) brightness(1.1) contrast(1.1)',
-                                transform: 'scale(var(--logo-scale, 1.25))'
+                                filter: 'brightness(1.5) contrast(1.1)',
+                                transform: 'scale(1.1)'
+                            }}
+                            onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'block';
                             }}
                         />
+                        <div style={{ display: 'none', fontSize: '2rem' }}>💬</div>
                     </div>
                     <motion.h1
                         initial={{ opacity: 0, x: -10 }}
@@ -160,31 +165,32 @@ function App() {
 
                 {/* PWA Install Notification */}
                 {showBanner && !isInstalled && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        style={{
-                            position: 'fixed',
-                            bottom: '2rem',
-                            left: '50%',
-                            transform: 'translateX(-50%)',
-                            background: 'rgba(25, 25, 25, 0.95)',
-                            backdropFilter: 'blur(12px)',
-                            border: '1px solid #333',
-                            padding: '1rem',
-                            borderRadius: '20px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            flexWrap: 'wrap',
-                            gap: '1rem',
-                            boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
-                            zIndex: 1000,
-                            width: 'calc(100vw - 32px)',
-                            maxWidth: '400px',
-                            boxSizing: 'border-box'
-                        }}
-                    >
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    style={{
+                        position: 'fixed',
+                        bottom: 'max(1.5rem, env(safe-area-inset-bottom))',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        background: 'rgba(20, 20, 20, 0.9)',
+                        backdropFilter: 'blur(20px) saturate(180%)',
+                        WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        padding: '1rem',
+                        borderRadius: '24px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '1rem',
+                        boxShadow: '0 30px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)',
+                        zIndex: 9999,
+                        width: 'calc(100% - 32px)',
+                        maxWidth: '440px',
+                        boxSizing: 'border-box'
+                    }}
+                    className="pwa-banner"
+                >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '200px' }}>
                             <div style={{ 
                                 width: '40px', 

@@ -1,0 +1,23 @@
+{
+  "name": "GrabChat - Chat PDF Downloader",
+  "short_name": "GrabChat",
+  "description": "Convert ChatGPT shared links into high-fidelity PDFs instantly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#10a37f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
