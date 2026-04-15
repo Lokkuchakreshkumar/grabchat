@@ -34,7 +34,4 @@ Thumbs.db
 appDataDir/
 brain/
 logs/
-*.webp
-*.png
-*.jpg
-*.jpeg
+

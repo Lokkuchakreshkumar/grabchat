@@ -14,6 +14,9 @@ export default defineConfig({
         short_name: 'GrabChat',
         description: 'High-fidelity ChatGPT shared link to PDF converter',
         theme_color: '#000000',
+        background_color: '#000000',
+        display: 'standalone',
+        start_url: '/',
         icons: [
           {
             src: 'icon.png',

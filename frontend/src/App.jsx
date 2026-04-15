@@ -171,36 +171,40 @@ function App() {
                             background: 'rgba(25, 25, 25, 0.95)',
                             backdropFilter: 'blur(12px)',
                             border: '1px solid #333',
-                            padding: '1.25rem 1.75rem',
-                            borderRadius: '24px',
+                            padding: '1rem',
+                            borderRadius: '20px',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '1.5rem',
+                            justifyContent: 'space-between',
+                            flexWrap: 'wrap',
+                            gap: '1rem',
                             boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
                             zIndex: 1000,
-                            width: 'max-content',
-                            maxWidth: '90vw'
+                            width: 'calc(100vw - 32px)',
+                            maxWidth: '400px',
+                            boxSizing: 'border-box'
                         }}
                     >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: '200px' }}>
                             <div style={{ 
-                                width: '44px', 
-                                height: '44px', 
+                                width: '40px', 
+                                height: '40px', 
                                 background: 'white', 
-                                borderRadius: '14px', 
+                                borderRadius: '12px', 
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 justifyContent: 'center',
+                                flexShrink: 0,
                                 boxShadow: '0 4px 12px rgba(255,255,255,0.1)'
                             }}>
-                                <img src="/favicon.svg" width="24" height="24" style={{ filter: 'invert(1)' }} />
+                                <img src="/favicon.svg" width="22" height="22" style={{ filter: 'invert(1)' }} />
                             </div>
                             <div style={{ textAlign: 'left' }}>
-                                <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 700, color: 'white' }}>GrabChat Web App</h4>
-                                <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.6, color: 'white' }}>Install for a native experience</p>
+                                <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 700, color: 'white', lineHeight: 1.2 }}>GrabChat App</h4>
+                                <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.6, color: 'white', marginTop: '2px' }}>Install for native experience</p>
                             </div>
                         </div>
-                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'flex-end' }}>
                             <button 
                                 onClick={dismissBanner}
                                 style={{ background: 'transparent', border: 'none', color: '#888', fontSize: '0.85rem', cursor: 'pointer', padding: '0.5rem', fontWeight: 600 }}
@@ -213,11 +217,12 @@ function App() {
                                     background: 'white', 
                                     color: 'black', 
                                     border: 'none', 
-                                    padding: '0.7rem 1.4rem', 
-                                    borderRadius: '12px', 
+                                    padding: '0.6rem 1.2rem', 
+                                    borderRadius: '10px', 
                                     fontWeight: 750, 
                                     fontSize: '0.85rem', 
                                     cursor: 'pointer',
+                                    whiteSpace: 'nowrap',
                                     transition: 'all 0.2s ease'
                                 }}
                             >
