@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+:root {
+  --primary: #ffffff;
+  --primary-hover: #e0e0e0;
+  --accent: #888888;
+  --bg-dark: #000000;
+  --bg-card: #080808;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --border: #1a1a1a;
+  --user-msg: #0d0d0d;
+  --ai-msg: #050505;
+  --header-gap: 8px; /* Positive gap instead of negative pull */
+  --logo-scale: 1.25;
+  --logo-width: 96px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass {
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  background-color: var(--border);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.input-field {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.chat-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+
+
+pre {
+  background: #000;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
+
+.header {
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.title {
+  font-size: 4.2rem; /* Base size moved from inline */
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(to bottom, #fff 60%, #999 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.markdown-content p {
+  margin-bottom: 0.8rem;
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.markdown-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  list-style-type: decimal;
+}
+
+.markdown-content ul ul, .markdown-content ol ul {
+  list-style-type: circle;
+  margin-bottom: 0;
+}
+
+.markdown-content code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9em;
+}
+
+.markdown-content th, .markdown-content td {
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.markdown-content th {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+.markdown-content tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.markdown-content pre {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* PDF/Print Optimization - Exact ChatGPT Dark Theme */
+.pdf-mode {
+  background-color: #212121 !important;
+  color: #ececf1 !important;
+  padding: 40px !important;
+  width: 794px !important; /* A4 width at 96dpi */
+  margin: 0 !important;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
+}
+
+.pdf-mode h2 {
+  color: #ffffff !important;
+  text-align: left !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 2rem !important;
+  border-bottom: 1px solid #3d3d3d !important;
+  padding-bottom: 1rem !important;
+}
+
+.pdf-mode .message {
+  margin-bottom: 2rem !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+  border: none !important;
+}
+
+.pdf-mode .message.user {
+  background-color: #2f2f2f !important;
+  border-radius: 20px !important;
+  padding: 1rem 1.5rem !important;
+  max-width: 80% !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+.pdf-mode .message.assistant {
+  background-color: transparent !important;
+  max-width: 90% !important;
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+.pdf-mode .role-label {
+  color: #9ca3af !important;
+  font-size: 0.8rem !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+.pdf-mode .message.user .role-label {
+  text-align: right !important;
+}
+
+.pdf-mode .markdown-content {
+  color: #d1d1d1 !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+}
+
+.pdf-mode .markdown-content pre {
+  background: #0d0d0d !important;
+  border: 1px solid #333 !important;
+  color: #fff !important;
+  padding: 1rem !important;
+  border-radius: 8px !important;
+}
+
+.pdf-mode .markdown-content code {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  :root {
+    --logo-width: 72px;
+    --logo-scale: 1.15;
+    --header-gap: 6px;
+  }
+
+  .title {
+    font-size: 2.5rem !important;
+  }
+  
+  .header {
+    padding: 2.5rem 1.5rem 1.5rem !important;
+  }
+  
+  .chat-container {
+    padding: 0 1rem 2rem !important;
+  }
+  
+  .input-field {
+    padding: 12px 14px !important;
+    padding-left: 44px !important;
+  }
+  
+  .btn-primary {
+    padding: 10px 18px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .glass {
+    padding: 1.25rem !important;
+    border-radius: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem !important;
+  }
+}

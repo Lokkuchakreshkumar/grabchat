@@ -1,0 +1,12 @@
+{
+  "name": "chat-download-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start:backend": "cd backend && node index.js",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev": "npx concurrently \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
