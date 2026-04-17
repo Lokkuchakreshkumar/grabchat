@@ -24,18 +24,31 @@ app.post('/api/extract', async (req, res) => {
     const venvPythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
     const pythonPath = process.env.PYTHON_PATH || venvPythonPath;
     
-    exec(`"${pythonPath}" "${scraperPath}" "${url}"`, (error, stdout, stderr) => {
-        if (stderr && stderr.trim()) {
-            console.log('[scraper.py]', stderr.trim());
+    const { spawn } = require('child_process');
+    const pyProcess = spawn(pythonPath, [scraperPath, url]);
+    
+    let stdoutData = '';
+    let stderrData = '';
+
+    pyProcess.stdout.on('data', (data) => {
+        stdoutData += data.toString();
+    });
+
+    pyProcess.stderr.on('data', (data) => {
+        stderrData += data.toString();
+    });
+
+    pyProcess.on('close', (code) => {
+        if (stderrData.trim()) {
+            console.log('[scraper.py]', stderrData.trim());
         }
 
-        if (error) {
-            console.error('Scrapling Error:', error.message);
-            return res.status(500).json({ error: 'Failed to extract chat. ' + error.message });
+        if (code !== 0 && stdoutData.trim() === '') {
+            return res.status(500).json({ error: 'Failed to extract chat. Process exited with code ' + code });
         }
 
         try {
-            const data = JSON.parse(stdout);
+            const data = JSON.parse(stdoutData);
             if (data.error) {
                 return res.status(500).json({ error: data.error });
             }
@@ -45,8 +58,14 @@ app.post('/api/extract', async (req, res) => {
             res.json(data);
         } catch (parseError) {
             console.error('JSON Parse Error:', parseError.message);
-            console.error('Raw Output:', stdout);
             res.status(500).json({ error: 'Failed to parse scraper output.' });
+        }
+    });
+
+    pyProcess.on('error', (err) => {
+        console.error('Failed to start scraper process:', err);
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Failed to start extraction process.' });
         }
     });
 });
